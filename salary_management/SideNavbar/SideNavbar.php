@@ -46,7 +46,7 @@
 <!-- Sidebar -->
 <div class="sidenav">
   <a href="AddViewEmployee.php">Employee List</a>
-  <a href="#">About</a>
+  <a href="\salary_management\salary_management\EmployeeDetails\employeeDisplay.php">Employee Details</a>
   <a href="#">Services</a>
   <a href="\salary_management\salary_management\index.php">logout</a>
 </div>
