@@ -15,7 +15,14 @@ include "../dbconnect.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
-     <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+        <script>
+        $(document).ready(function() {
+            $('#MyTable').DataTable();
+        });
+    </script>
+    
     
    
   
@@ -179,12 +186,7 @@ if ($result) {
 ?>
 
         </table>
-        <script src="//cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
-        <script>
-        $(document).ready(function() {
-            $('#MyTable').DataTable();
-        });
-    </script>
+       
         
     </body>
     
