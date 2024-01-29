@@ -1,18 +1,16 @@
+
 <?php
-
-$host="localhost";
-$user="root";
-$password="";
-$db="salary";
-
-session_start();
+$host = "localhost";
+$user = "root";
+$password = "";
+$db = "salary";
 
 
-$dbconn=mysqli_connect($host,$user,$password,$db);
+$dbconn = mysqli_connect($host, $user, $password, $db);
 
-if(!$dbconn)
-{
-	die("connection error");
+if ($dbconn === false) {
+    die("connection error");
 }
 
-?>
+
+

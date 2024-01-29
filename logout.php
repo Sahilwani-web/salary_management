@@ -3,5 +3,7 @@
  session_unset();
  session_destroy();
 
-include ("location:login.php")
+header("Location: login.php");
+exit();
+
 ?>
