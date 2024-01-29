@@ -137,7 +137,7 @@ include "../dbconnect.php";
 <td>' . $security_deposit  . '</td>
 <td>
 <button class = "btn btn-primary"><a href="update.php?editid=' . $emp_id . '" class ="text-light">Update</a></button> </td>
-<td> <button id ="deletedata"  class = "btn btn-danger delete "   ><a href="delete.php?deleteid=' . $emp_id . '"  class ="text-light">Delete</a></button> </td>
+<td> <button id = "delete" ><a href="delete.php?deleteid=' . $emp_id . '"  class ="text-light">Delete</a></button> </td>
 
 
 </tr>';
