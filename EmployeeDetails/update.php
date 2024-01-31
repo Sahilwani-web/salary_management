@@ -5,7 +5,8 @@ $emp_id = $_GET['editid'];
 $sql = "select * from `employeedetails` where emp_id = $emp_id";
 $result = mysqli_query($dbconn, $sql);
 $row = mysqli_fetch_assoc($result);
-$emp_name =$row['emp_name'];
+    $emp_number = $row['emp_number'];
+    $emp_name =$row['emp_name'];
     $emp_role= $row['emp_role'];
     $emp_pan= $row['emp_pan'];
     $emp_contact=$row['emp_contact'];
@@ -16,7 +17,8 @@ $emp_name =$row['emp_name'];
 
 
 if(isset($_POST['submit'])){
-    $emp_name =$_POST['emp_name'];
+    $emp_number =  $_POST['emp_number'];
+    $emp_name = $_POST['emp_name'];
     $emp_role= $_POST['emp_role'];
     $emp_pan= $_POST['emp_pan'];
     $emp_contact=$_POST['emp_contact'];
@@ -25,13 +27,13 @@ if(isset($_POST['submit'])){
     $provident_fund = $_POST['provident_fund'];
     $security_deposit = $_POST['security_deposit'];
 
-    $sql = "UPDATE `employeedetails` SET `emp_name` = '$emp_name', `emp_role` = '$emp_role', `emp_pan` = '$emp_pan', `emp_contact` = '$emp_contact', `emp_address` = '$emp_address', `emp_basic_salary` = '$emp_basic_salary', `provident_fund` = '$provident_fund', `security_deposit` = '$security_deposit' WHERE `employeedetails`.`emp_id` = $emp_id";
+    $sql = "UPDATE `employeedetails` SET `emp_number` = '$emp_number', `emp_name` = '$emp_name', `emp_role` = '$emp_role', `emp_pan` = '$emp_pan', `emp_contact` = '$emp_contact', `emp_address` = '$emp_address', `emp_basic_salary` = '$emp_basic_salary', `provident_fund` = '$provident_fund', `security_deposit` = '$security_deposit' WHERE `employeedetails`.`emp_id` = $emp_id";
     $result = mysqli_query($dbconn, $sql);
     if ($result) {
     //     echo '<div class="alert alert-success" role="alert">
     //     Data inserted successfully!
     //   </div>';
-        header('location:\salary_management\salary_management\EmployeeDetails\employeeDisplay.php');
+        header('location:\salary_management\EmployeeDetails\employeeDisplay.php');
     }
     else {
         die(mysqli_error($dbconn));
@@ -57,6 +59,12 @@ if(isset($_POST['submit'])){
 <body>
     <div class="container my-5">
         <form method="post">
+        <div class="mb-3">
+                <label for="name" class="form-label">Employee Number</label>
+                <input type="text" class="form-control" id="name" name="emp_number" placeholder="Enter your employee number"
+                value="<?php echo $emp_number?>" autocomplete="off" required readonly>
+                   
+            </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Employee name</label>
                 <input type="text" class="form-control" id="name" name="emp_name" placeholder="Enter your name"

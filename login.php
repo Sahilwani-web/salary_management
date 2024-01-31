@@ -1,4 +1,5 @@
 <?php
+session_start();
     include('dbconnect.php');
     if (isset($_POST['submit'])) {
         $username = $_POST['username'];

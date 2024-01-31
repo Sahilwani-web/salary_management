@@ -8,7 +8,7 @@ $path = explode("/", $query_string);
 //print_r($path);
 
 // if($path[1] == 'employees'){
-//     echo "Shwo List of emplooyees";
+//     echo "Shwo List of employees";
 // }elseif($path[1] == 'employee'){
 //     echo "Shwo details of one emplyee";
 // }elseif($path[1] == 'newemployee'){

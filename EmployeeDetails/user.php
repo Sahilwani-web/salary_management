@@ -1,6 +1,7 @@
 <?php
 include '../dbconnect.php';
 if (isset($_POST['submit'])) {
+    $emp_number =  str_replace('YI-', '' , $_POST['emp_number']); 
     $emp_name = $_POST['emp_name'];
     $emp_role = $_POST['emp_role'];
     $emp_pan = $_POST['emp_pan'];
@@ -9,20 +10,23 @@ if (isset($_POST['submit'])) {
     $emp_basic_salary = $_POST['emp_basic_salary'];
     $provident_fund = $_POST['provident_fund'];
     $security_deposit = $_POST['security_deposit'];
+    
 
-    $sql = "INSERT INTO `employeedetails` (`emp_name`, `emp_role`, `emp_pan`, `emp_contact`, `emp_address`, `emp_basic_salary`, `provident_fund`, `security_deposit`) VALUES ('$emp_name', '$emp_role', '$emp_pan', '$emp_contact', '$emp_address', '$emp_basic_salary', '$provident_fund', '$security_deposit')";
+    $sql = "INSERT INTO `employeedetails` ( `emp_name`, `emp_role`, `emp_pan`, `emp_contact`, `emp_address`, `emp_basic_salary`, `provident_fund`, `security_deposit`, `emp_number`) VALUES ('$emp_name', '$emp_role', '$emp_pan', '$emp_contact', '$emp_address', '$emp_basic_salary', '$provident_fund', '$security_deposit','$emp_number')";
     $result = mysqli_query($dbconn, $sql);
     if ($result) {
         //     echo '<div class="alert alert-success" role="alert">
         //     Data inserted successfully!
         //   </div>';
-        header('location:\salary_management\salary_management\EmployeeDetails\employeeDisplay.php');
+        header('location:\salary_management\salary_management\EmployeeDetails\employeeDisplay.php?insert_msg= Your data has been added successfully !!');
     } else {
         die(mysqli_error($dbconn));
     }
 }
 
 ?>
+
+
 
 <!doctype html>
 <html lang="en">
@@ -38,6 +42,11 @@ if (isset($_POST['submit'])) {
 <body>
     <div class="container my-5">
         <form method="post">
+        <div class="mb-3">
+                <label for="name" class="form-label">Employee number</label>
+                <input type="text" class="form-control" id="name" name="emp_number"  autocomplete="off" required>
+
+            </div>
             <div class="mb-3">
                 <label for="name" class="form-label">Employee name</label>
                 <input type="text" class="form-control" id="name" name="emp_name" placeholder="Enter your name" autocomplete="off" required>

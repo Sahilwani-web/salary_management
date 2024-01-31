@@ -45,10 +45,10 @@
 
 <!-- Sidebar -->
 <div class="sidenav">
-  <a href="AddViewEmployee.php">Employee List</a>
-  <a href="EmployeeDetails\employeeDisplay.php">Employee Details</a>
+  <a href="\salary_management\AddViewEmployee.php">Employee List</a>
+  <a href="\salary_management\employeeDetails/employeeDisplay.php">Employee Details</a>
   <a href="#">Services</a>
-  <a href="\salary_management\salary_management\index.php">logout</a>
+  <a href="\salary_management\login.php">logout</a>
 </div>
 </body>
 </html>

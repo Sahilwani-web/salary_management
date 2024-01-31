@@ -3,7 +3,7 @@ include "../TopNavbar/TopNavbar.php";
 include "../SideNavbar/SideNavbar.php";
 include "../dbconnect.php";
 ?>
-  
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,16 +28,23 @@ include "../dbconnect.php";
     </script>
 
     <style>
-        body {
+        <?php
+        if (isset($_GET["delete"])) {
+        }
+
+        if (isset($_POST['insert_msg'])) {
+            echo "<h6>" . $_POST['insert_msg'] . "</h6>";
+        }
+        ?>body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin-top: 8%;
             padding: 0;
-           
+
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1500px;
             margin: 20px auto;
             background-color: #fff;
             padding: 20px;
@@ -81,12 +88,25 @@ include "../dbconnect.php";
             color: #fff;
         }
     </style>
+
+    <?php
+    $query = "select max(emp_number)+1 as new_emp_code from employeedetails order by emp_id desc limit 1";
+    $result = mysqli_query($dbconn, $query);
+    $row = mysqli_fetch_assoc($result);
+
+    $newEmployeeCode = "";
+    if (null === $row['new_emp_code']) {
+        $newEmployeeCode = "YI-" . "10001";
+    } else {
+        $newEmpCode = $row['new_emp_code'];
+        $newEmployeeCode = "YI-" . $newEmpCode;
+    } ?>
 </head>
 
 <body>
     <div class="container">
-        
-        <a href="/salary_management/user.php">
+
+        <a href="\salary_management\EmployeeDetails\user.php">
             <button>Add New Employee</button>
         </a>
 
@@ -94,6 +114,7 @@ include "../dbconnect.php";
             <thead>
                 <tr>
                     <th>Employee ID</th>
+                    <th>Employee Number</th>
                     <th>Employee Name</th>
                     <th>Employee Role</th>
                     <th>Employee PAN</th>
@@ -117,6 +138,7 @@ include "../dbconnect.php";
                     while ($row = mysqli_fetch_assoc($result)) {
                         $emp_id = $emp_id + 1;
                         // $emp_id = $row['emp_id'];
+                        $emp_number = $row['emp_number'];
                         $emp_name = $row['emp_name'];
                         $emp_role = $row['emp_role'];
                         $emp_pan = $row['emp_pan'];
@@ -126,18 +148,20 @@ include "../dbconnect.php";
                         $provident_fund = $row['provident_fund'];
                         $security_deposit = $row['security_deposit'];
                         echo '<tr>
+
 <td>' . $emp_id . '</td>
+<td>' . $emp_number . '</td>
 <td>' . $emp_name . '</td>
 <td>' . $emp_role . '</td>
-<td>' .  $emp_pan . '</td>
+<td>' . $emp_pan . '</td>
 <td>' . $emp_contact . '</td>
 <td>' . $emp_address . '</td>
 <td>' . $emp_basic_salary . '</td>
 <td>' . $provident_fund . '</td>
-<td>' . $security_deposit  . '</td>
+<td>' . $security_deposit . '</td>
 <td>
 <button class = "btn btn-primary"><a href="update.php?editid=' . $emp_id . '" class ="text-light">Update</a></button> </td>
-<td> <button id = "delete" ><a href="delete.php?deleteid=' . $emp_id . '"  class ="text-light">Delete</a></button> </td>
+<td> <button id = "delete" ><a href="?deleteid=' . $emp_id . '"  class ="delete">Delete</a></button> </td>
 
 
 </tr>';
@@ -147,6 +171,25 @@ include "../dbconnect.php";
             </tbody>
         </table>
     </div>
+    <Script>
+        deletes = document.getElementsByClassName('delete');
+        Array.from(deletes).forEach((element) => {
+            element.addEventListener("click", (e) => {
+                console.log("edit ");
+                sno = e.target.id.substr(1);
+
+                if (confirm("Are you sure you want to delete this note!")) {
+                    console.log("yes");
+                    window.location = `salary_management/EmployeeDetails/employeeDisplay.php?delete=${emp_id}`;
+                } else {
+                    console.log("no");
+                }
+            })
+        })
+    </script>
+
+
+
 </body>
 
 </html>
