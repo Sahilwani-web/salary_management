@@ -15,7 +15,7 @@ session_start();
         }  
         else{  
             echo  '<script>
-                        window.location.href = "index.php";
+                        window.location.href = "login.php";
                         alert("Login failed. Invalid username or password!!")
                     </script>';
         }     
