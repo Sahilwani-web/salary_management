@@ -20,3 +20,4 @@ $path = explode("/", $query_string);
 // }elseif($path[1] == 'logout'){
 //     echo "Logout the user";
 // }
+?>
